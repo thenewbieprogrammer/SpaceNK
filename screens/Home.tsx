@@ -9,6 +9,7 @@ import HorizontalCardList from '../components/HorizontalCardList/HorizontalCardL
 import VerticalCardList from '../components/VerticalCardList/VerticalCardList';
 import { FlatList } from 'react-native';
 import PromoStrip from "../components/PromoStrip/PromoStrip";
+import InfoTickerBanner from "../components/InfoTickerBanner/InfoTickerBanner";
 
 
 const categories = ['All', 'Skincare', 'Makeup', 'Hair', 'Fragrance'];
@@ -31,6 +32,49 @@ const verticalCardListRecommendedItems = [
     { id: '3', title: 'Fragrance Trends', subtitle: 'What’s hot in 2025' },
 ];
 
+const infoTickerBannerItems = [
+    { id: '1', icon: 'truck', text: 'Free UK delivery over £25' },
+    { id: '2', icon: 'box', text: 'Click & Collect now available' },
+    { id: '3', icon: 'star', text: 'Members earn points on every order' },
+];
+
+
+const renderPromoStrip = () => (
+    <PromoStrip
+        message="Enjoy 15% off your first order"
+        ctaText="Shop Now"
+        onPressCTA={() => console.log('CTA clicked')}
+    />
+);
+
+const renderHeaderSection = (
+    selectedCategory: string,
+    setSelectedCategory: (cat: string) => void
+) => (
+    <>
+        <HeaderBar />
+        <SearchBar />
+        <InfoTickerBanner items={infoTickerBannerItems} />
+        <CategoryTabs
+            categories={categories}
+            selected={selectedCategory}
+            onTabChange={setSelectedCategory}
+        />
+    </>
+);
+
+const renderFeaturedSection = () => (
+    <>
+        <FeaturedBanner data={featuredItems} />
+        <SectionHeader
+            title="Trending Now"
+            onViewAllPress={() => console.log('View All Trending')}
+        />
+        <HorizontalCardList data={horizontalCardListTrendingItems} />
+        <SectionHeader title="Recommended For You" />
+    </>
+);
+
 
 const HomeScreen = () => {
     const [selectedCategory, setSelectedCategory] = useState('All');
@@ -47,25 +91,9 @@ const HomeScreen = () => {
             )}
             ListHeaderComponent={
                 <>
-                    <PromoStrip
-                        message="Enjoy 15% off your first order"
-                        ctaText="Shop Now"
-                        onPressCTA={() => console.log('CTA clicked')}
-                    />
-                    <HeaderBar />
-                    <SearchBar />
-                    <CategoryTabs
-                        categories={categories}
-                        selected={selectedCategory}
-                        onTabChange={setSelectedCategory}
-                    />
-                    <FeaturedBanner data={featuredItems} />
-                    <SectionHeader
-                        title="Trending Now"
-                        onViewAllPress={() => console.log('View All Trending')}
-                    />
-                    <HorizontalCardList data={horizontalCardListTrendingItems} />
-                    <SectionHeader title="Recommended For You" />
+                    {renderPromoStrip()}
+                    {renderHeaderSection(selectedCategory, setSelectedCategory)}
+                    {renderFeaturedSection()}
                 </>
             }
         />
