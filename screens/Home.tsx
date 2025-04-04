@@ -8,6 +8,7 @@ import SectionHeader from '../components/SectionHeader/SectionHeader';
 import HorizontalCardList from '../components/HorizontalCardList/HorizontalCardList';
 import VerticalCardList from '../components/VerticalCardList/VerticalCardList';
 import { FlatList } from 'react-native';
+import PromoStrip from "../components/PromoStrip/PromoStrip";
 
 
 const categories = ['All', 'Skincare', 'Makeup', 'Hair', 'Fragrance'];
@@ -46,6 +47,11 @@ const HomeScreen = () => {
             )}
             ListHeaderComponent={
                 <>
+                    <PromoStrip
+                        message="Enjoy 15% off your first order"
+                        ctaText="Shop Now"
+                        onPressCTA={() => console.log('CTA clicked')}
+                    />
                     <HeaderBar />
                     <SearchBar />
                     <CategoryTabs
