@@ -11,6 +11,7 @@ import { FlatList } from 'react-native';
 import PromoStrip from "../components/PromoStrip/PromoStrip";
 import InfoTickerBanner from "../components/InfoTickerBanner/InfoTickerBanner";
 import CTASectionCard from '../components/CTASectionCard/CTASectionCard';
+import FeaturedProductCategoryList from '../components/FeaturedProductCategoryList/FeaturedProductCategoryList';
 
 
 
@@ -40,6 +41,33 @@ const infoTickerBannerItems = [
     { id: '3', icon: 'star', text: 'Members earn points on every order' },
 ];
 
+const featuredProductCategoriesListItems = [
+    {
+        id: '1',
+        image: require('../assets/phlur-4.jpg'),
+        tag: 'NEW & EXCLUSIVE',
+        title: 'Phlur Rose Whip Eau De Parfum',
+        description: 'A carnal and contemporary take on rose: this osmanthus...',
+        onPress: () => console.log('Pressed card 1'),
+    },
+    {
+        id: '2',
+        image: require('../assets/phlur-2.jpg'),
+        tag: 'SCENT SPOTLIGHT',
+        title: 'We’ve Fallen For Glossier Fleur',
+        description: 'New to the You family, Fleur is an airy fragrance just wow wow wow',
+        onPress: () => console.log('Pressed card 2'),
+    },
+    {
+        id: '3',
+        image: require('../assets/phlur-3.jpg'),
+        tag: 'ONLINE EXCLUSIVE ONLY',
+        title: 'Drop Dead Gorgeous Fleur',
+        description: 'New to the You family, Fleur is an airy fragrance...',
+        onPress: () => console.log('Pressed card 2'),
+    },
+];
+
 
 const renderPromoStrip = () => (
     <PromoStrip
@@ -67,7 +95,10 @@ const renderHeaderSection = (
             buttonText="SHOP NOW"
             onPress={() => console.log('CTA pressed')}
         />
-
+        <FeaturedProductCategoryList
+            data={featuredProductCategoriesListItems}
+            orientation="horizontal" // or "vertical" depending on the section
+        />
     </>
 );
 
