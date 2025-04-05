@@ -10,6 +10,7 @@ import VerticalCardList from '../components/VerticalCardList/VerticalCardList';
 import { FlatList } from 'react-native';
 import PromoStrip from "../components/PromoStrip/PromoStrip";
 import InfoTickerBanner from "../components/InfoTickerBanner/InfoTickerBanner";
+import CTASectionCard from '../components/CTASectionCard/CTASectionCard';
 
 
 const categories = ['All', 'Skincare', 'Makeup', 'Hair', 'Fragrance'];
@@ -60,6 +61,14 @@ const renderHeaderSection = (
             selected={selectedCategory}
             onTabChange={setSelectedCategory}
         />
+        <CTASectionCard
+            heading="ENJOY 15% OFF YOUR FIRST ORDER"
+            subheading="JUST FOR YOU"
+            code="FIRST15"
+            buttonText="SHOP NOW"
+            onPress={() => console.log('CTA pressed')}
+        />
+
     </>
 );
 
@@ -71,6 +80,7 @@ const renderFeaturedSection = () => (
             onViewAllPress={() => console.log('View All Trending')}
         />
         <HorizontalCardList data={horizontalCardListTrendingItems} />
+
         <SectionHeader title="Recommended For You" />
     </>
 );
