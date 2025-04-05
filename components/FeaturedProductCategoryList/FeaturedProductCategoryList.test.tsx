@@ -25,11 +25,11 @@ const mockData = [
 
 describe('FeaturedProductCategoryList', () => {
     it('renders cards vertically by default', () => {
-        const { getByText } = render(<FeaturedProductCategoryList data={mockData} />);
+        const { getByText, getAllByText } = render(<FeaturedProductCategoryList data={mockData} />);
 
         expect(getByText('NEW & EXCLUSIVE')).toBeTruthy();
         expect(getByText('Phlur Rose Whip Eau De Parfum')).toBeTruthy();
-        expect(getByText('SHOP NOW')).toBeTruthy();
+        expect(getAllByText('SHOP NOW').length).toBeGreaterThanOrEqual(2);
     });
 
     it('renders cards horizontally when orientation is set to horizontal', () => {
