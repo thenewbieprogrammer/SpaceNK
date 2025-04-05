@@ -13,6 +13,7 @@ import InfoTickerBanner from "../components/InfoTickerBanner/InfoTickerBanner";
 import CTASectionCard from '../components/CTASectionCard/CTASectionCard';
 
 
+
 const categories = ['All', 'Skincare', 'Makeup', 'Hair', 'Fragrance'];
 
 // Mock banner data
@@ -50,11 +51,9 @@ const renderPromoStrip = () => (
 
 const renderHeaderSection = (
     selectedCategory: string,
-    setSelectedCategory: (cat: string) => void
+    setSelectedCategory: (cat: string) => void,
 ) => (
     <>
-        <HeaderBar />
-        <SearchBar />
         <InfoTickerBanner items={infoTickerBannerItems} />
         <CategoryTabs
             categories={categories}
@@ -88,25 +87,39 @@ const renderFeaturedSection = () => (
 
 const HomeScreen = () => {
     const [selectedCategory, setSelectedCategory] = useState('All');
+    const [showSearchInHeader, setShowSearchInHeader] = useState(false);
 
     return (
-        <FlatList
-            data={verticalCardListRecommendedItems}
-            keyExtractor={(item) => item.id}
-            renderItem={({ item }) => (
-                <View style={styles.verticalCardWrapper}>
-                    <Text style={styles.verticalTitle}>{item.title}</Text>
-                    <Text style={styles.verticalSubtitle}>{item.subtitle}</Text>
-                </View>
-            )}
-            ListHeaderComponent={
-                <>
-                    {renderPromoStrip()}
-                    {renderHeaderSection(selectedCategory, setSelectedCategory)}
-                    {renderFeaturedSection()}
-                </>
-            }
-        />
+        <View style={{ flex: 1 }}>
+            {renderPromoStrip()}
+
+            <HeaderBar showSearch={showSearchInHeader}/>
+            <FlatList
+                data={verticalCardListRecommendedItems}
+                keyExtractor={(item) => item.id}
+                renderItem={({ item }) => (
+                    <View style={styles.verticalCardWrapper}>
+                        <Text style={styles.verticalTitle}>{item.title}</Text>
+                        <Text style={styles.verticalSubtitle}>{item.subtitle}</Text>
+                    </View>
+                )}
+                onScroll={(event) => {
+                    const scrollY = event.nativeEvent.contentOffset.y;
+                    setShowSearchInHeader(scrollY > 50); // tweak threshold
+                }}
+                scrollEventThrottle={32}
+                contentContainerStyle={{ paddingTop: 64 }}
+                ListHeaderComponent={
+                    <>
+                        {!showSearchInHeader && <SearchBar />}
+
+                        {renderHeaderSection(selectedCategory, setSelectedCategory)}
+                        {renderFeaturedSection()}
+                    </>
+                }
+            />
+        </View>
+
     );
 };
 
