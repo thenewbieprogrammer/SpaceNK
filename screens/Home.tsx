@@ -12,6 +12,7 @@ import PromoStrip from "../components/PromoStrip/PromoStrip";
 import InfoTickerBanner from "../components/InfoTickerBanner/InfoTickerBanner";
 import CTASectionCard from '../components/CTASectionCard/CTASectionCard';
 import FeaturedProductCategoryList from '../components/FeaturedProductCategoryList/FeaturedProductCategoryList';
+import HorizontalProductSlider from '../components/HorizontalProductSlider/HorizontalProductSlider';
 
 
 
@@ -68,6 +69,84 @@ const featuredProductCategoriesListItems = [
     },
 ];
 
+const featuredProductCategoriesListSpotlightItems = [
+    {
+        id: '1',
+        image: require('../assets/dr-dennis-gross-01.jpg'),
+        tag: 'AT-HOME TREATMENTS',
+        title: 'Dr Dennis Gross Delivers',
+        description: 'High-tech skincare that gives clinical-grade results but without the injectables',
+        onPress: () => console.log('Pressed card 1'),
+    },
+    {
+        id: '2',
+        image: require('../assets/phlur-01.jpg'),
+        tag: 'SCENT SPOTLIGHT',
+        title: 'We’ve Fallen For Glossier Fleur',
+        description: 'New to the You family, Fleur is an airy fragrance just wow wow wow',
+        onPress: () => console.log('Pressed card 2'),
+    },
+    {
+        id: '3',
+        image: require('../assets/laneige-craze-01.webp'),
+        tag: 'NEW IN',
+        title: `Laniege's Glaze Craze Tinted Lip Serums Are Here`,
+        description: 'Inspired by doughnut flavours mmmmm mm, these vital tinted lip treats' +
+            ' ensure visibly plump lips ...',
+        onPress: () => console.log('Pressed card 3'),
+    },
+    {
+        id: '4',
+        image: require('../assets/spacenk-01.jpg'),
+        tag: 'WE LOVE',
+        title: `Our Paros Tides Collection`,
+        description: 'Inspired by the Greek Island our new edit is brimming with refreshing' +
+            'aquatic notes...',
+        onPress: () => console.log('Pressed card 4'),
+    },
+];
+
+
+const trendingProductsHorizontalProductSliderItems = [
+    {
+        id: '1',
+        image: require('../assets/nivea-cream-1.jpg'), // replace with actual assets
+        tag: 'TRENDING',
+        brand: 'NIVEA',
+        name: 'Cocoa Butter Balm',
+        price: '£23.00',
+        rating: 4.5,
+        reviewCount: 2198,
+        onQuickBuy: () => console.log('Quick Buy pressed'),
+        onShopNow: () => console.log('Shop Now pressed'),
+    },
+    {
+        id: '2',
+        image: require('../assets/nivea-cream-2.jpg'),
+        tag: 'TRENDING',
+        brand: 'NIVEA',
+        name: 'Turkish Flavoured-Nivea ',
+        price: '£19.00',
+        rating: 4.7,
+        reviewCount: 3540,
+        onQuickBuy: () => console.log('Quick Buy 2'),
+        onShopNow: () => console.log('Shop Now 2'),
+    },
+    {
+        id: '3',
+        image: require('../assets/nivea-cream-3.jpg'),
+        tag: 'TRENDING',
+        brand: 'NIVEA',
+        name: 'Hand Cream Intensive',
+        price: '£19.00',
+        rating: 4.8,
+        reviewCount: 7819,
+        onQuickBuy: () => console.log('Quick Buy 2'),
+        onShopNow: () => console.log('Shop Now 2'),
+    },
+];
+
+
 
 const renderPromoStrip = () => (
     <PromoStrip
@@ -98,6 +177,17 @@ const renderHeaderSection = (
         <FeaturedProductCategoryList
             data={featuredProductCategoriesListItems}
             orientation="horizontal" // or "vertical" depending on the section
+        />
+
+        <SectionHeader title="Trending Now" onViewAllPress={() => console.log('View All Trending')} />
+
+        <HorizontalProductSlider data={trendingProductsHorizontalProductSliderItems} />
+
+        <SectionHeader title="" />
+
+        <FeaturedProductCategoryList
+            data={featuredProductCategoriesListSpotlightItems}
+            orientation="vertical" // or "vertical" depending on the section
         />
     </>
 );
