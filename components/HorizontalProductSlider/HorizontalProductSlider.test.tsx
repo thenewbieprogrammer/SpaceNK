@@ -21,7 +21,7 @@ describe('HorizontalProductSlider', () => {
     it('renders product info correctly', () => {
         const { getByText } = render(<HorizontalProductSlider data={mockProducts} />);
 
-        expect(getByText('NEW SHADE')).toBeTruthy();
+        expect(getByText('TRENDING')).toBeTruthy();
         expect(getByText('SUMMER FRIDAYS')).toBeTruthy();
         expect(getByText('Lip Butter Balm')).toBeTruthy();
         expect(getByText('£23.00')).toBeTruthy();
