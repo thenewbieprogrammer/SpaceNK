@@ -8,14 +8,14 @@ const multipleBlogs = [
         title: 'Tatcha’s Brightening Serum',
         image: require('../../assets/social-media-tatcha-01.webp'),
         tag: 'Trending',
-        cta: 'Discover Now',
+        cta: 'DISCOVER NOW',
     },
     {
         id: '2',
         title: 'Vitamin C Skincare Essentials',
         image: require('../../assets/social-media-skincare-01.jpg'),
         tag: 'Trending',
-        cta: 'Discover Now',
+        cta: 'DISCOVER NOW',
     },
 ];
 
@@ -25,7 +25,7 @@ const singleBlog = {
     brand: 'Phlur',
     image: require('../../assets/phlur-2.jpg'),
     tag: 'Spotlight On',
-    cta: 'Read Now',
+    cta: 'READ NOW',
 };
 
 describe('FeaturedBlogEntries', () => {
