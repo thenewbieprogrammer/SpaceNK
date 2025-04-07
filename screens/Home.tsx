@@ -14,6 +14,7 @@ import CTASectionCard from '../components/CTASectionCard/CTASectionCard';
 import FeaturedProductCategoryList from '../components/FeaturedProductCategoryList/FeaturedProductCategoryList';
 import HorizontalProductSlider from '../components/HorizontalProductSlider/HorizontalProductSlider';
 import SocialMediaSlider from '../components/SocialMediaSlider/SocialMediaSlider';
+import FeaturedBlogEntries from '../components/FeaturedBlogEntries/FeaturedBlogEntries';
 
 
 
@@ -283,6 +284,23 @@ const socialMediaSliderItems = [
     },
 ];
 
+const trendingFeaturedBlogEntries = [
+    {
+        id: '1',
+        title: 'Tatcha’s Brightening Serum',
+        image: require('../assets/social-media-tatcha-01.webp'),
+        cta: 'Discover Now',
+        onPress: () => console.log('Blog 1 clicked'),
+    },
+    {
+        id: '2',
+        title: 'Vitamin C Skincare Essentials',
+        image: require('../assets/social-media-skincare-01.jpg'),
+        cta: 'Discover Now',
+        onPress: () => console.log('Blog 2 clicked'),
+    },
+];
+
 
 
 const renderPromoStrip = () => (
@@ -338,6 +356,8 @@ const renderHeaderSection = (
             data={featuredBrandsProductCategoriesListItems}
             orientation="horizontal"
         />
+        <FeaturedBlogEntries blogEntry={trendingFeaturedBlogEntries} tag="Trending Stories" />
+
     </>
 );
 

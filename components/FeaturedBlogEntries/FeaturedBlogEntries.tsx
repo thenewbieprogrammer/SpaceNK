@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState} from 'react';
 import {
     View,
     Text,
@@ -25,6 +25,8 @@ interface Props {
 }
 
 const FeaturedBlogEntries = ({ blogEntry, tag = '' }: Props) => {
+    const [ctaTextWidth, setCtaTextWidth] = useState(0);
+
     const isSingle = !Array.isArray(blogEntry);
 
     if (isSingle) {
@@ -61,7 +63,14 @@ const FeaturedBlogEntries = ({ blogEntry, tag = '' }: Props) => {
                         <Image source={item.image} style={styles.cardImage} />
                         <Text style={styles.cardTitle}>{item.title}</Text>
                         <TouchableOpacity onPress={item.onPress}>
-                            <Text style={styles.cardCta}>{item.cta}</Text>
+                            <View style={styles.ctaWrapper}>
+                                <Text style={styles.cardCta}
+                                      onLayout={(e) =>
+                                          setCtaTextWidth(e.nativeEvent.layout.width)}>
+                                    {item.cta}
+                                </Text>
+                                <View style={[styles.underline, { width: ctaTextWidth }]} />
+                            </View>
                         </TouchableOpacity>
                     </View>
                 )}
@@ -126,6 +135,15 @@ const styles = StyleSheet.create({
         width: 200,
         marginRight: 12,
     },
+    ctaWrapper: {
+        alignSelf: 'flex-start',
+        marginTop: 4,
+    },
+    underline: {
+        height: 1.5,
+        backgroundColor: '#000',
+        width: 60,
+    },
     cardImage: {
         width: '100%',
         height: 140,
@@ -141,6 +159,7 @@ const styles = StyleSheet.create({
         fontSize: 12,
         color: '#333',
         fontWeight: 'bold',
+        marginBottom: 4,
     },
 });
 
