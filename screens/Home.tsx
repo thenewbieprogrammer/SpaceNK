@@ -207,20 +207,18 @@ const renderHeaderSection = (
             data={featuredProductCategoriesListItems}
             orientation="horizontal"
         />
-
         <SectionHeader title="Trending Now" onViewAllPress={() => console.log('View All Trending')} />
-
         <HorizontalProductSlider data={trendingProductsHorizontalProductSliderItems} />
-
         <SectionHeader title="" />
-
         <FeaturedProductCategoryList
             data={featuredProductCategoriesListSpotlightItems}
             orientation="vertical"
         />
-
         <SectionHeader title="As Seen On Social" />
         <SocialMediaSlider data={socialMediaSliderItems} showModalOnPress />
+
+        <SectionHeader title="New Brands at Space NK" />
+        <HorizontalProductSlider data={trendingProductsHorizontalProductSliderItems} />
 
     </>
 );

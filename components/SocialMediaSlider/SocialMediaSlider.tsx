@@ -62,11 +62,12 @@ const SocialMediaSlider = ({ data, showModalOnPress = false }: Props) => {
                 <Modal transparent animationType="slide" visible onRequestClose={() => setSelectedItem(null)}>
                     <View style={styles.modalOverlay}>
                         <View style={styles.modalContent}>
-                            <TouchableOpacity style={styles.modalClose} onPress={() => setSelectedItem(null)}>
-                                <Ionicons name="close" size={24} />
-                            </TouchableOpacity>
-
-                            <Image source={selectedItem.image} style={styles.modalImage} />
+                            <View style={styles.modalTopWrapper}>
+                                <Image source={selectedItem.image} style={styles.modalImage} />
+                                <TouchableOpacity onPress={() => setSelectedItem(null)} style={styles.closeButton}>
+                                    <Ionicons name="close" size={16} color="#fff" />
+                                </TouchableOpacity>
+                            </View>
                             <Text style={styles.modalUsername}>{selectedItem.username}</Text>
                             <Text style={styles.modalLikes}>{selectedItem.likes} likes</Text>
                             <Text style={styles.modalCaption}>{selectedItem.caption}</Text>
@@ -100,6 +101,10 @@ const styles = StyleSheet.create({
         padding: 4,
         borderRadius: 12,
     },
+    headerImageWrapper: {
+        width: '100%',
+        position: 'relative',
+    },
     label: {
         marginTop: 6,
         textAlign: 'center',
@@ -112,36 +117,67 @@ const styles = StyleSheet.create({
         justifyContent: 'center',
         padding: 20,
     },
+    modalHeader: {
+        width: '100%',
+        flexDirection: 'row',
+        justifyContent: 'flex-end',
+        paddingHorizontal: 8,
+        paddingTop: 8,
+        marginBottom: -12,
+    },
+    modalTopWrapper: {
+        width: '100%',
+        position: 'relative',
+    },
     modalContent: {
         backgroundColor: '#fff',
         borderRadius: 12,
-        padding: 16,
-        alignItems: 'center',
+        overflow: 'hidden',
+    },
+    modalImageWrapper: {
+        width: '100%',
+        position: 'relative',
     },
     modalImage: {
         width: '100%',
         height: 200,
-        borderRadius: 8,
+    },
+    modalImageContainer: {
+        position: 'relative',
+        width: '100%',
+        height: 200,
         marginBottom: 12,
     },
-    modalClose: {
+    closeButton: {
         position: 'absolute',
-        top: 12,
-        right: 12,
+        top: 1,
+        right: 1,
+        backgroundColor: 'rgba(0, 0, 0, 0.2)',
+        width: 26,
+        height: 26,
+        borderRadius: 13,
+        alignItems: 'center',
+        justifyContent: 'center',
+        zIndex: 10,
     },
     modalUsername: {
         fontWeight: '600',
         fontSize: 14,
+        marginTop: 12,
         marginBottom: 4,
+        textAlign: 'center',
     },
     modalLikes: {
         fontSize: 12,
         color: '#888',
         marginBottom: 8,
+        textAlign: 'center',
     },
     modalCaption: {
         fontSize: 13,
         textAlign: 'center',
+        paddingHorizontal: 16,
+        paddingBottom: 12,
     },
 });
 
