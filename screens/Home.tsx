@@ -106,6 +106,76 @@ const featuredProductCategoriesListSpotlightItems = [
         onPress: () => console.log('Pressed card 4'),
     },
 ];
+const featuredNewBrandsProductCategoriesListItems = [
+    {
+        id: '1',
+        image: require('../assets/joonbyrd-1.webp'),
+        tag: 'Joonbyrd',
+        title: 'Dr Dennis Gross Delivers',
+        description: 'High-tech skincare that gives clinical-grade results but without the injectables',
+        onPress: () => console.log('Pressed card 1'),
+    },
+    {
+        id: '2',
+        image: require('../assets/westman-atelier-1.jpg'),
+        tag: 'Westman Atelier',
+        title: 'We’ve Fallen For Glossier Fleur',
+        description: 'New to the You family, Fleur is an airy fragrance just wow wow wow',
+        onPress: () => console.log('Pressed card 2'),
+    },
+    {
+        id: '3',
+        image: require('../assets/phlur-2.jpg'),
+        tag: 'Phlur',
+        title: `Laniege's Glaze Craze Tinted Lip Serums Are Here`,
+        description: 'Inspired by doughnut flavours mmmmm mm, these vital tinted lip treats' +
+            ' ensure visibly plump lips ...',
+        onPress: () => console.log('Pressed card 3'),
+    },
+    {
+        id: '4',
+        image: require('../assets/lisa-eldridge-1.jpg'),
+        tag: 'Lisa Eldridge',
+        title: `Our Paros Tides Collection`,
+        description: 'Inspired by the Greek Island our new edit is brimming with refreshing' +
+            'aquatic notes...',
+        onPress: () => console.log('Pressed card 4'),
+    },
+];
+const featuredBrandsProductCategoriesListItems = [
+    {
+        id: '1',
+        image: require('../assets/byredo-1.jpg'),
+        tag: 'Byredo',
+        title: 'Chic Fragrances',
+        description: '',
+        onPress: () => console.log('Pressed card 1'),
+    },
+    {
+        id: '2',
+        image: require('../assets/laneige-craze-01.webp'),
+        tag: 'Laneige',
+        title: 'Hydration Heroes',
+        description: '',
+        onPress: () => console.log('Pressed card 2'),
+    },
+    {
+        id: '3',
+        image: require('../assets/beauty-blender-1.avif'),
+        tag: 'Beauty Blender',
+        title: `Power Tools`,
+        description: '',
+        onPress: () => console.log('Pressed card 3'),
+    },
+    {
+        id: '4',
+        image: require('../assets/emma-lewisham-1.avif'),
+        tag: 'Emma Lewisham',
+        title: `Powered By Scientists`,
+        description: '',
+        onPress: () => console.log('Pressed card 4'),
+    },
+];
 
 
 const trendingProductsHorizontalProductSliderItems = [
@@ -139,6 +209,44 @@ const trendingProductsHorizontalProductSliderItems = [
         tag: 'TRENDING',
         brand: 'NIVEA',
         name: 'Hand Cream Intensive',
+        price: '£19.00',
+        rating: 4.8,
+        reviewCount: 7819,
+        onQuickBuy: () => console.log('Quick Buy 2'),
+        onShopNow: () => console.log('Shop Now 2'),
+    },
+];
+const newInProductsHorizontalProductSliderItems = [
+    {
+        id: '1',
+        image: require('../assets/the-coconut-company-01.jpg'), // replace with actual assets
+        tag: 'NEW IN',
+        brand: 'The Coconut Company',
+        name: 'Coconut oil',
+        price: '£23.00',
+        rating: 4.5,
+        reviewCount: 2198,
+        onQuickBuy: () => console.log('Quick Buy pressed'),
+        onShopNow: () => console.log('Shop Now pressed'),
+    },
+    {
+        id: '2',
+        image: require('../assets/coconut-oil-2.jpg'),
+        tag: 'NEW IN',
+        brand: 'Forest Whole Foods',
+        name: 'Turkish Flavoured-Oil ',
+        price: '£19.00',
+        rating: 4.7,
+        reviewCount: 3540,
+        onQuickBuy: () => console.log('Quick Buy 2'),
+        onShopNow: () => console.log('Shop Now 2'),
+    },
+    {
+        id: '3',
+        image: require('../assets/coconut-oil-3.jpg'),
+        tag: 'NEW IN',
+        brand: 'Mr Organic',
+        name: '100% Organic Coconut Oil',
         price: '£19.00',
         rating: 4.8,
         reviewCount: 7819,
@@ -218,8 +326,18 @@ const renderHeaderSection = (
         <SocialMediaSlider data={socialMediaSliderItems} showModalOnPress />
 
         <SectionHeader title="New Brands at Space NK" />
-        <HorizontalProductSlider data={trendingProductsHorizontalProductSliderItems} />
+        <FeaturedProductCategoryList
+            data={featuredNewBrandsProductCategoriesListItems}
+            orientation="horizontal"
+        />
+        <SectionHeader title="New In" />
+        <HorizontalProductSlider data={newInProductsHorizontalProductSliderItems} />
 
+        <SectionHeader title="Featured Brands" />
+        <FeaturedProductCategoryList
+            data={featuredBrandsProductCategoriesListItems}
+            orientation="horizontal"
+        />
     </>
 );
 
