@@ -13,6 +13,7 @@ import InfoTickerBanner from "../components/InfoTickerBanner/InfoTickerBanner";
 import CTASectionCard from '../components/CTASectionCard/CTASectionCard';
 import FeaturedProductCategoryList from '../components/FeaturedProductCategoryList/FeaturedProductCategoryList';
 import HorizontalProductSlider from '../components/HorizontalProductSlider/HorizontalProductSlider';
+import SocialMediaSlider from '../components/SocialMediaSlider/SocialMediaSlider';
 
 
 
@@ -147,6 +148,34 @@ const trendingProductsHorizontalProductSliderItems = [
 ];
 
 
+const socialMediaSliderItems = [
+    {
+        id: '1',
+        image: require('../assets/social-media-nola-01.jpeg'), // replace with actual image
+        label: 'Nola',
+        username: '@emilylouisebacon',
+        likes: 113,
+        caption: 'Let’s try on the Nola Skin Essentials Oil…',
+    },
+    {
+        id: '2',
+        image: require('../assets/social-media-nola-01.jpeg'),
+        label: 'Tatcha',
+        username: '@charlottebeauty',
+        likes: 76,
+        caption: 'This is one of my go-to evening glam looks 💄✨',
+    },
+    {
+        id: '3',
+        image: require('../assets/social-media-charlotte-tilbury-01.jpg'),
+        label: 'Charlotte Tilbury',
+        username: '@charlottebeauty',
+        likes: 179,
+        caption: 'Wow wow just wow ✨',
+    },
+];
+
+
 
 const renderPromoStrip = () => (
     <PromoStrip
@@ -176,7 +205,7 @@ const renderHeaderSection = (
         />
         <FeaturedProductCategoryList
             data={featuredProductCategoriesListItems}
-            orientation="horizontal" // or "vertical" depending on the section
+            orientation="horizontal"
         />
 
         <SectionHeader title="Trending Now" onViewAllPress={() => console.log('View All Trending')} />
@@ -187,8 +216,12 @@ const renderHeaderSection = (
 
         <FeaturedProductCategoryList
             data={featuredProductCategoriesListSpotlightItems}
-            orientation="vertical" // or "vertical" depending on the section
+            orientation="vertical"
         />
+
+        <SectionHeader title="As Seen On Social" />
+        <SocialMediaSlider data={socialMediaSliderItems} showModalOnPress />
+
     </>
 );
 
