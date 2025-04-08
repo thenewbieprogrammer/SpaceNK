@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, { useState } from 'react';
 import {
     View,
     Text,
@@ -26,7 +26,6 @@ interface Props {
 
 const FeaturedBlogEntries = ({ blogEntry, tag = '' }: Props) => {
     const [ctaTextWidth, setCtaTextWidth] = useState(0);
-
     const isSingle = !Array.isArray(blogEntry);
 
     if (isSingle) {
@@ -34,16 +33,19 @@ const FeaturedBlogEntries = ({ blogEntry, tag = '' }: Props) => {
 
         return (
             <View style={styles.spotlightContainer} testID="spotlight-layout">
-                <Image source={entry.image} style={styles.spotlightImage} resizeMode="cover" />
-                <Text style={styles.tag}>{tag.toUpperCase()}</Text>
-                {entry.brand && <Text style={styles.brand}>{entry.brand.toUpperCase()}</Text>}
-                <Text style={styles.title}>{entry.title}</Text>
-                <TouchableOpacity style={styles.button} onPress={entry.onPress}>
-                    <Text style={styles.buttonText}>{entry.cta}</Text>
-                </TouchableOpacity>
+                <View style={styles.spotlightCard}>
+                    <Image source={entry.image} style={styles.spotlightImage} resizeMode="cover" />
+                    <Text style={styles.tag}>{tag.toUpperCase()}</Text>
+                    {entry.brand && <Text style={styles.brand}>{entry.brand.toUpperCase()}</Text>}
+                    <Text style={styles.title}>{entry.title}</Text>
+                    <TouchableOpacity style={styles.button} onPress={entry.onPress}>
+                        <Text style={styles.buttonText}>{entry.cta}</Text>
+                    </TouchableOpacity>
+                </View>
             </View>
         );
     }
+
 
     const entries = blogEntry as BlogEntry[];
 
@@ -64,9 +66,10 @@ const FeaturedBlogEntries = ({ blogEntry, tag = '' }: Props) => {
                         <Text style={styles.cardTitle}>{item.title}</Text>
                         <TouchableOpacity onPress={item.onPress}>
                             <View style={styles.ctaWrapper}>
-                                <Text style={styles.cardCta}
-                                      onLayout={(e) =>
-                                          setCtaTextWidth(e.nativeEvent.layout.width)}>
+                                <Text
+                                    style={styles.cardCta}
+                                    onLayout={(e) => setCtaTextWidth(e.nativeEvent.layout.width)}
+                                >
                                     {item.cta}
                                 </Text>
                                 <View style={[styles.underline, { width: ctaTextWidth }]} />
@@ -77,6 +80,8 @@ const FeaturedBlogEntries = ({ blogEntry, tag = '' }: Props) => {
             />
         </View>
     );
+
+
 };
 
 const styles = StyleSheet.create({
@@ -92,6 +97,7 @@ const styles = StyleSheet.create({
         fontWeight: '600',
         color: '#888',
         marginTop: 8,
+        textAlign: 'center',
     },
     title: {
         fontSize: 18,
@@ -106,6 +112,7 @@ const styles = StyleSheet.create({
         paddingVertical: 10,
         paddingHorizontal: 24,
         borderRadius: 20,
+        alignSelf: 'center',
     },
     buttonText: {
         color: '#fff',
@@ -113,8 +120,16 @@ const styles = StyleSheet.create({
         fontSize: 13,
     },
     spotlightContainer: {
+        width: '100%',
+        paddingHorizontal: 0,
         alignItems: 'center',
+    },
+    spotlightCard: {
+        width: '100%',
+        maxWidth: '100%',
+        alignSelf: 'stretch',
         padding: 16,
+        backgroundColor: '#fff',
     },
     spotlightImage: {
         width: '100%',
@@ -133,17 +148,8 @@ const styles = StyleSheet.create({
         marginBottom: 12,
     },
     card: {
-        width: 200,
+        width: 350,
         marginRight: 12,
-    },
-    ctaWrapper: {
-        alignSelf: 'flex-start',
-        marginTop: 4,
-    },
-    underline: {
-        height: 1.5,
-        backgroundColor: '#000',
-        width: 60,
     },
     cardImage: {
         width: '100%',
@@ -161,6 +167,14 @@ const styles = StyleSheet.create({
         color: '#333',
         fontWeight: 'bold',
         marginBottom: 4,
+    },
+    ctaWrapper: {
+        alignSelf: 'flex-start',
+        marginTop: 4,
+    },
+    underline: {
+        height: 1.5,
+        backgroundColor: '#000',
     },
 });
 

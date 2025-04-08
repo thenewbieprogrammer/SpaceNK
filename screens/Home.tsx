@@ -281,6 +281,18 @@ const trendingFeaturedBlogEntries = [
     },
 ];
 
+const spotlightFeaturedBlogEntry = [
+    {
+        id: '1',
+        title: 'What the Phlur fragrances actually smell like...',
+        image: require('../assets/phlur-01.jpg'),
+        cta: 'Read Now',
+        onPress: () => console.log('Blog 1 clicked'),
+    },
+
+];
+
+
 const featuredCustomerFavouriteProductItems = [
     {
         id: '1',
@@ -311,6 +323,32 @@ const featuredCustomerFavouriteProductItems = [
         price: '£31.00',
         onAddToBag: () => console.log('Added Glow Recipe to bag'),
         onViewDetails: () => console.log('Viewing Glow Recipe details'),
+    },
+];
+const productCategoriesListDiscoveryItems = [
+    {
+        id: '1',
+        image: require('../assets/social-media-skincare-01.jpg'),
+        tag: '',
+        title: 'My Matches',
+        description: 'Check out which products are best suited to your skin...',
+        onPress: () => console.log('Pressed card 1'),
+    },
+    {
+        id: '2',
+        image: require('../assets/events-1.jpg'),
+        tag: '',
+        title: 'Events',
+        description: 'Attend beauty masterclass, exclusive launches & pop-ups',
+        onPress: () => console.log('Pressed card 2'),
+    },
+    {
+        id: '3',
+        image: require('../assets/instagram.webp'),
+        tag: 'Instagram',
+        title: 'Follow @SpaceNK on IG',
+        description: 'Join our community to keep upto date with the latest beauty content and insider tips...',
+        onPress: () => console.log('Pressed card 2'),
     },
 ];
 
@@ -385,6 +423,12 @@ const renderMainSection = () => (
             description="Enjoy reward points and enjoy a host of exciting benefits with our exclusive NDULGE loyalty program"
             buttonText="JOIN NOW"
             onPress={() => console.log('CTA pressed')}
+        />
+
+        <FeaturedBlogEntries blogEntry={spotlightFeaturedBlogEntry} tag="Spotlight On" />
+        <FeaturedProductCategoryList
+            data={productCategoriesListDiscoveryItems}
+            orientation="horizontal"
         />
     </>
 );
