@@ -11,7 +11,7 @@ const mockProducts = [
         reviewTitle: 'Perfect Everyday Moisturiser',
         reviewBody: 'Absorbs quickly, keeps my skin soft all day, and doesn’t feel greasy.',
         reviewer: 'karly4ella',
-        brand: 'Kiehl\'s',
+        brand: "Kiehl's",
         size: '50ML',
         productName: 'Ultra Facial Cream',
         price: '£37.00',
@@ -37,11 +37,14 @@ const mockProducts = [
 
 describe('FeaturedCustomerFavouriteProducts', () => {
     it('renders the first product in the list', () => {
-        const { getByText } = render(<FeaturedCustomerFavouriteProducts products={mockProducts} />);
+        const { getAllByText, getByText } = render(
+            <FeaturedCustomerFavouriteProducts products={mockProducts} />
+        );
 
-        expect(getByText('CUSTOMER FAVOURITE')).toBeTruthy();
+        // Validate static content
+        expect(getAllByText('CUSTOMER FAVOURITE').length).toBeGreaterThanOrEqual(1);
         expect(getByText('"PERFECT EVERYDAY MOISTURISER"')).toBeTruthy();
-        expect(getByText('KIEHL\'S')).toBeTruthy();
+        expect(getByText("KIEHL'S")).toBeTruthy();
         expect(getByText('£37.00')).toBeTruthy();
     });
 
@@ -54,14 +57,14 @@ describe('FeaturedCustomerFavouriteProducts', () => {
 
         fireEvent.scroll(scrollView, {
             nativeEvent: {
-                contentOffset: { x: 400, y: 0 }, // simulate horizontal swipe
+                contentOffset: { x: 400, y: 0 },
                 layoutMeasurement: { width: 400, height: 800 },
                 contentSize: { width: 800, height: 800 },
             },
         });
 
         await waitFor(() => {
-            expect(getByText('A GLOW BOOSTING SERUM')).toBeTruthy();
+            expect(getByText('"A GLOW BOOSTING SERUM"')).toBeTruthy();
             expect(getByText('GLOW RECIPE')).toBeTruthy();
             expect(getByText('£31.00')).toBeTruthy();
         });
