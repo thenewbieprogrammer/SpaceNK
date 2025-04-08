@@ -382,7 +382,7 @@ const renderMainSection = () => (
         <CTASectionCard
             heading="Ndulge"
             subheading="Become a member"
-            code="Enjoy reward points and enjoy a host of exciting benefits with our exclusive NDULGE loyalty program"
+            description="Enjoy reward points and enjoy a host of exciting benefits with our exclusive NDULGE loyalty program"
             buttonText="JOIN NOW"
             onPress={() => console.log('CTA pressed')}
         />

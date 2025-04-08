@@ -1,22 +1,28 @@
 import React from 'react';
-import {ImageBackground, Pressable, StyleSheet, Text, TouchableOpacity, View} from 'react-native';
+import {
+    ImageBackground,
+    StyleSheet,
+    Text,
+    TouchableOpacity,
+    View,
+} from 'react-native';
 
 interface Props {
     heading: string;
     subheading?: string;
     code?: string;
+    description?: string;
     buttonText: string;
     onPress: () => void;
     footerText?: string;
     backgroundImage?: any;
 }
 
-
-
 const CTASectionCard = ({
                             heading,
                             subheading,
                             code,
+                            description,
                             buttonText,
                             onPress,
                             footerText,
@@ -27,7 +33,9 @@ const CTASectionCard = ({
         <>
             {subheading && <Text style={styles.subheading}>{subheading}</Text>}
             <Text style={styles.heading}>{heading}</Text>
+
             {code && <Text style={styles.code}>USE CODE: {code}</Text>}
+            {!code && description && <Text style={styles.code}>{description}</Text>}
 
             <TouchableOpacity onPress={onPress} style={styles.button}>
                 <Text style={styles.buttonText}>{buttonText}</Text>
@@ -49,11 +57,8 @@ const CTASectionCard = ({
                 </View>
             )}
         </View>
-
     );
 };
-
-
 
 const styles = StyleSheet.create({
     wrapper: {
@@ -67,7 +72,7 @@ const styles = StyleSheet.create({
         alignItems: 'center',
     },
     fallbackBackground: {
-        backgroundColor: '#f0f0f0', // light neutral fallback
+        backgroundColor: '#f0f0f0',
     },
     subheading: {
         fontSize: 12,
@@ -85,9 +90,10 @@ const styles = StyleSheet.create({
     },
     code: {
         fontSize: 16,
-        letterSpacing: 2,
+        letterSpacing: 1,
         color: '#444',
         marginBottom: 20,
+        textAlign: 'center',
     },
     button: {
         backgroundColor: '#000',
@@ -109,6 +115,5 @@ const styles = StyleSheet.create({
         marginTop: 12,
     },
 });
-
 
 export default CTASectionCard;
