@@ -85,16 +85,15 @@ const styles = StyleSheet.create({
         paddingHorizontal: 16,
     },
     verticalWrapper: {
-        paddingHorizontal: 16,   // Left + right spacing for the list
+        paddingHorizontal: 16,
     },
     card: {
-        marginBottom: 24,
+        marginBottom: 0,
         alignSelf: 'center',
-        marginLeft: 16,
-        width: '100%',               // ensures it can grow full width
+        marginLeft: 1,
+        width: '100%',
         maxWidth: 420,
     },
-
     cardHorizontal: {
         width: 260,
         marginRight: 16,
@@ -120,7 +119,7 @@ const styles = StyleSheet.create({
         fontSize: 12,
         color: '#666',
         marginTop: 4,
-        marginBottom: 8,
+        marginBottom: 6,
     },
     button: {
         color: '#000',
@@ -129,7 +128,7 @@ const styles = StyleSheet.create({
     },
     ctaButtonHorizontal: {
         backgroundColor: '#000',
-        paddingVertical: 8,
+        paddingVertical: 6,
         paddingHorizontal: 16,
         borderRadius: 20,
         alignSelf: 'flex-start',
@@ -137,7 +136,7 @@ const styles = StyleSheet.create({
     },
 
     buttonText: {
-        color: '#000', // fallback/default
+        color: '#000',
         fontWeight: '600',
         fontSize: 13,
     },

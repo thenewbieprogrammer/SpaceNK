@@ -22,7 +22,7 @@ const SectionHeader = ({ title, onViewAllPress }: Props) => {
 const styles = StyleSheet.create({
     container: {
         paddingHorizontal: 16,
-        paddingVertical: 12,
+        paddingVertical: 24,
         flexDirection: 'row',
         justifyContent: 'space-between',
         alignItems: 'center',
