@@ -41,10 +41,10 @@ const styles = StyleSheet.create({
         paddingTop: 12,
 
         position: 'absolute',
-        top: 30, // 👈 adjust this depending on height of PromoStrip
+        top: 30, // adjust this depends on the height of PromoStrip
         left: 0,
         right: 0,
-        zIndex: 100, // Keeps it above other content
+        zIndex: 100,
 
     },
     containerWithSearch: {

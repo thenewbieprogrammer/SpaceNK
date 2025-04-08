@@ -162,7 +162,7 @@ const featuredBrandsProductCategoriesListItems = [
 const trendingProductsHorizontalProductSliderItems = [
     {
         id: '1',
-        image: require('../assets/nivea-cream-1.jpg'), // replace with actual assets
+        image: require('../assets/nivea-cream-1.jpg'),
         tag: 'TRENDING',
         brand: 'NIVEA',
         name: 'Cocoa Butter Balm',

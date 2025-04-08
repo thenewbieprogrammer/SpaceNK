@@ -32,11 +32,11 @@ export const defaultTheme = {
             backgroundColor: 'rgba(255, 255, 255, 0.3)',
             borderRadius: 16,
             overflow: 'hidden',
-            backdropFilter: 'blur(20px)', // ✅ Web-specific
+            backdropFilter: 'blur(20px)', // Web-specific
         },
 
         nativeBlurGlass: {
-            backgroundColor: 'rgba(255, 255, 255, 0.3)', // ⬅️ was 0.3, now more see-through
+            backgroundColor: 'rgba(255, 255, 255, 0.3)',
             borderRadius: 0,
             overflow: 'hidden',
         }as ViewStyle,
