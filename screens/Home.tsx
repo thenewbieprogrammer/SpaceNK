@@ -1,13 +1,10 @@
 import React, {useState} from 'react';
 import { ScrollView, StyleSheet, View, Text } from 'react-native';
+import { FlatList } from 'react-native';
 import HeaderBar from '../components/HeaderBar/HeaderBar';
 import SearchBar from '../components/SearchBar/SearchBar';
 import CategoryTabs from '../components/CategoryTabs/CategoryTabs';
-import FeaturedBanner from '../components/HorizontalFeaturedBanner/HorizontalFeaturedBanner';
 import SectionHeader from '../components/SectionHeader/SectionHeader';
-import HorizontalCardList from '../components/HorizontalCardList/HorizontalCardList';
-import VerticalCardList from '../components/VerticalCardList/VerticalCardList';
-import { FlatList } from 'react-native';
 import PromoStrip from "../components/PromoStrip/PromoStrip";
 import InfoTickerBanner from "../components/InfoTickerBanner/InfoTickerBanner";
 import CTASectionCard from '../components/CTASectionCard/CTASectionCard';
@@ -20,23 +17,6 @@ import FeaturedCustomerFavouriteProducts from '../components/FeaturedCustomerFav
 
 
 const categories = ['All', 'Skincare', 'Makeup', 'Hair', 'Fragrance'];
-
-const featuredItems = [
-    { id: '1', title: 'Glow Up', description: 'New skincare drops' },
-    { id: '2', title: 'Spring Picks', description: 'Fresh for the season' },
-];
-
-const horizontalCardListTrendingItems = [
-    { id: '1', title: 'Vitamin C Serum' },
-    { id: '2', title: 'Night Repair Cream' },
-    { id: '3', title: 'Daily Sunscreen' },
-];
-
-const verticalCardListRecommendedItems = [
-    { id: '1', title: 'Evening Routine', subtitle: 'Top skincare tips' },
-    { id: '2', title: 'Makeup Essentials', subtitle: 'What to wear this season' },
-    { id: '3', title: 'Fragrance Trends', subtitle: 'What’s hot in 2025' },
-];
 
 const infoTickerBannerItems = [
     { id: '1', icon: 'truck', text: 'Free UK delivery over £25' },
@@ -343,6 +323,7 @@ const renderPromoStrip = () => (
     />
 );
 
+
 const renderHeaderSection = (
     selectedCategory: string,
     setSelectedCategory: (cat: string) => void,
@@ -354,6 +335,12 @@ const renderHeaderSection = (
             selected={selectedCategory}
             onTabChange={setSelectedCategory}
         />
+    </>
+);
+
+
+const renderMainSection = () => (
+    <>
         <CTASectionCard
             heading="ENJOY 15% OFF YOUR FIRST ORDER"
             subheading="JUST FOR YOU"
@@ -392,19 +379,13 @@ const renderHeaderSection = (
 
         <FeaturedCustomerFavouriteProducts products={featuredCustomerFavouriteProductItems} />
 
-    </>
-);
-
-const renderFeaturedSection = () => (
-    <>
-        <FeaturedBanner data={featuredItems} />
-        <SectionHeader
-            title="Trending Now"
-            onViewAllPress={() => console.log('View All Trending')}
+        <CTASectionCard
+            heading="Ndulge"
+            subheading="Become a member"
+            code="Enjoy reward points and enjoy a host of exciting benefits with our exclusive NDULGE loyalty program"
+            buttonText="JOIN NOW"
+            onPress={() => console.log('CTA pressed')}
         />
-        <HorizontalCardList data={horizontalCardListTrendingItems} />
-
-        <SectionHeader title="Recommended For You" />
     </>
 );
 
@@ -419,56 +400,26 @@ const HomeScreen = () => {
 
             <HeaderBar showSearch={showSearchInHeader}/>
             <FlatList
-                data={verticalCardListRecommendedItems}
-                keyExtractor={(item) => item.id}
-                renderItem={({ item }) => (
-                    <View style={styles.verticalCardWrapper}>
-                        <Text style={styles.verticalTitle}>{item.title}</Text>
-                        <Text style={styles.verticalSubtitle}>{item.subtitle}</Text>
-                    </View>
-                )}
+                data={[]}
+                keyExtractor={() => ''}
+                renderItem={null}
                 onScroll={(event) => {
                     const scrollY = event.nativeEvent.contentOffset.y;
-                    setShowSearchInHeader(scrollY > 50); // tweak threshold
+                    setShowSearchInHeader(scrollY > 50);
                 }}
                 scrollEventThrottle={32}
                 contentContainerStyle={{ paddingTop: 64 }}
                 ListHeaderComponent={
                     <>
                         {!showSearchInHeader && <SearchBar />}
-
                         {renderHeaderSection(selectedCategory, setSelectedCategory)}
-                        {renderFeaturedSection()}
+                        {renderMainSection()}
                     </>
                 }
             />
         </View>
-
     );
 };
 
-const styles = StyleSheet.create({
-    container: {
-        flex: 1,
-        backgroundColor: '#fff',
-    },
-    verticalCardWrapper: {
-        paddingHorizontal: 16,
-        paddingVertical: 12,
-        backgroundColor: '#f9f9f9',
-        marginBottom: 8,
-        borderRadius: 12,
-    },
-    verticalTitle: {
-        fontSize: 16,
-        fontWeight: '600',
-        color: '#222',
-    },
-    verticalSubtitle: {
-        fontSize: 13,
-        color: '#555',
-        marginTop: 4,
-    },
-});
 
 export default HomeScreen;
