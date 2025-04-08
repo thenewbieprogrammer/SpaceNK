@@ -124,6 +124,7 @@ const styles = StyleSheet.create({
     },
     carouselContainer: {
         paddingVertical: 16,
+        marginTop: 18,
     },
     carouselTitle: {
         fontSize: 20,
