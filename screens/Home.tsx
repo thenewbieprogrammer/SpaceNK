@@ -332,6 +332,7 @@ const productCategoriesListDiscoveryItems = [
         tag: '',
         title: 'My Matches',
         description: 'Check out which products are best suited to your skin...',
+        buttonText: 'Unlock Your Matches',
         onPress: () => console.log('Pressed card 1'),
     },
     {
@@ -340,6 +341,7 @@ const productCategoriesListDiscoveryItems = [
         tag: '',
         title: 'Events',
         description: 'Attend beauty masterclass, exclusive launches & pop-ups',
+        buttonText: 'Book Now',
         onPress: () => console.log('Pressed card 2'),
     },
     {
@@ -348,6 +350,7 @@ const productCategoriesListDiscoveryItems = [
         tag: 'Instagram',
         title: 'Follow @SpaceNK on IG',
         description: 'Join our community to keep upto date with the latest beauty content and insider tips...',
+        buttonText: 'Follow Us',
         onPress: () => console.log('Pressed card 2'),
     },
 ];
@@ -426,6 +429,8 @@ const renderMainSection = () => (
         />
 
         <FeaturedBlogEntries blogEntry={spotlightFeaturedBlogEntry} tag="Spotlight On" />
+
+        <SectionHeader title="Experiment, Explore, Enjoy" />
         <FeaturedProductCategoryList
             data={productCategoriesListDiscoveryItems}
             orientation="horizontal"

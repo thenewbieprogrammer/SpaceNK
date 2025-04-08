@@ -99,6 +99,7 @@ const styles = StyleSheet.create({
         marginLeft: 1,
         width: '100%',
         maxWidth: 420,
+        marginBottom: 16,
     },
     cardHorizontal: {
         width: 260,
