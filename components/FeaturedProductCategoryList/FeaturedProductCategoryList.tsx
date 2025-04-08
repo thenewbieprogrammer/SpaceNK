@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState} from 'react';
 import {
     FlatList,
     View,
@@ -25,6 +25,7 @@ interface Props {
 }
 
 const FeaturedProductCategoryList = ({ data, orientation = 'vertical' }: Props) => {
+
     const renderCard = ({ item }: { item: FeaturedProductCategory }) => (
         <View style={[styles.card, orientation === 'horizontal' && styles.cardHorizontal]}>
             <Image source={item.image} style={styles.image} resizeMode="cover" />
@@ -32,16 +33,8 @@ const FeaturedProductCategoryList = ({ data, orientation = 'vertical' }: Props) 
             <Text style={styles.title}>{item.title}</Text>
             <Text style={styles.description}>{item.description}</Text>
 
-            <TouchableOpacity
-                onPress={item.onPress}
-                style={[
-                    orientation === 'horizontal' && styles.ctaButtonHorizontal
-                ]}
-            >
-                <Text style={[
-                    styles.buttonText,
-                    orientation === 'horizontal' && styles.buttonTextHorizontal
-                ]}>
+            <TouchableOpacity onPress={item.onPress} style={[orientation === 'horizontal' && styles.ctaButtonHorizontal]}>
+                <Text style={[styles.buttonText, orientation === 'horizontal' && styles.buttonTextHorizontal]}>
                     {item.buttonText || 'SHOP NOW'}
                 </Text>
             </TouchableOpacity>
@@ -64,20 +57,34 @@ const FeaturedProductCategoryList = ({ data, orientation = 'vertical' }: Props) 
 
     return (
         <View style={styles.verticalWrapper}>
-            {data.map((item) => (
-                <View key={item.id} style={styles.card}>
-                    <Image source={item.image} style={styles.image} resizeMode="cover" />
-                    <Text style={styles.tag}>{item.tag}</Text>
-                    <Text style={styles.title}>{item.title}</Text>
-                    <Text style={styles.description}>{item.description}</Text>
-                    <TouchableOpacity onPress={item.onPress}>
-                        <Text style={styles.buttonText}>{item.buttonText || 'SHOP NOW'}</Text>
-                    </TouchableOpacity>
-                </View>
-            ))}
+            {data.map((item) => {
+                const [ctaWidth, setCtaWidth] = useState(0);
+
+                return(
+                    <View key={item.id} style={[styles.card, orientation === 'vertical' && {marginBottom: 35}]}>
+                        <Image source={item.image} style={styles.image} resizeMode="cover" />
+                        <Text style={styles.tag}>{item.tag}</Text>
+                        <Text style={styles.title}>{item.title}</Text>
+                        <Text style={styles.description}>{item.description}</Text>
+                        <TouchableOpacity onPress={item.onPress}>
+                            <View style={{ alignSelf: 'flex-start' }}>
+                                <Text
+                                    style={styles.buttonText}
+                                    onLayout={(event) => {
+                                        const { width } = event.nativeEvent.layout;
+                                        setCtaWidth(width);
+                                    }}
+                                >
+                                    {item.buttonText || 'SHOP NOW'}
+                                </Text>
+                                <View style={[styles.underline, { width: ctaWidth }]} />
+                            </View>
+                        </TouchableOpacity>
+                    </View>
+                );
+            })}
         </View>
     );
-
 };
 
 const styles = StyleSheet.create({
@@ -88,7 +95,6 @@ const styles = StyleSheet.create({
         paddingHorizontal: 16,
     },
     card: {
-        marginBottom: 0,
         alignSelf: 'center',
         marginLeft: 1,
         width: '100%',
@@ -134,17 +140,19 @@ const styles = StyleSheet.create({
         alignSelf: 'flex-start',
         marginTop: 8,
     },
-
     buttonText: {
         color: '#000',
         fontWeight: '600',
         fontSize: 13,
     },
-
+    underline: {
+        height: 1,
+        backgroundColor: '#000',
+        marginTop: 4,
+    },
     buttonTextHorizontal: {
         color: '#fff',
     }
-
 });
 
 export default FeaturedProductCategoryList;
