@@ -41,7 +41,6 @@ describe('FeaturedCustomerFavouriteProducts', () => {
             <FeaturedCustomerFavouriteProducts products={mockProducts} />
         );
 
-        // Validate static content
         expect(getAllByText('CUSTOMER FAVOURITE').length).toBeGreaterThanOrEqual(1);
         expect(getByText('"PERFECT EVERYDAY MOISTURISER"')).toBeTruthy();
         expect(getByText("KIEHL'S")).toBeTruthy();

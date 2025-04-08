@@ -15,12 +15,12 @@ import FeaturedProductCategoryList from '../components/FeaturedProductCategoryLi
 import HorizontalProductSlider from '../components/HorizontalProductSlider/HorizontalProductSlider';
 import SocialMediaSlider from '../components/SocialMediaSlider/SocialMediaSlider';
 import FeaturedBlogEntries from '../components/FeaturedBlogEntries/FeaturedBlogEntries';
+import FeaturedCustomerFavouriteProducts from '../components/FeaturedCustomerFavouriteProducts/FeaturedCustomerFavouriteProducts';
 
 
 
 const categories = ['All', 'Skincare', 'Makeup', 'Hair', 'Fragrance'];
 
-// Mock banner data
 const featuredItems = [
     { id: '1', title: 'Glow Up', description: 'New skincare drops' },
     { id: '2', title: 'Spring Picks', description: 'Fresh for the season' },
@@ -220,7 +220,7 @@ const trendingProductsHorizontalProductSliderItems = [
 const newInProductsHorizontalProductSliderItems = [
     {
         id: '1',
-        image: require('../assets/the-coconut-company-01.jpg'), // replace with actual assets
+        image: require('../assets/the-coconut-company-01.jpg'),
         tag: 'NEW IN',
         brand: 'The Coconut Company',
         name: 'Coconut oil',
@@ -260,7 +260,7 @@ const newInProductsHorizontalProductSliderItems = [
 const socialMediaSliderItems = [
     {
         id: '1',
-        image: require('../assets/social-media-nola-01.jpeg'), // replace with actual image
+        image: require('../assets/social-media-nola-01.jpeg'),
         label: 'Nola',
         username: '@emilylouisebacon',
         likes: 113,
@@ -301,6 +301,38 @@ const trendingFeaturedBlogEntries = [
     },
 ];
 
+const featuredCustomerFavouriteProductItems = [
+    {
+        id: '1',
+        image: require('../assets/social-media-skincare-01.jpg'),
+        tag: 'Customer Favourite',
+        rating: 5,
+        reviewTitle: 'Perfect Everyday Moisturiser',
+        reviewBody: 'Absorbs quickly, keeps my skin soft all day, and doesn’t feel greasy.',
+        reviewer: 'karly4ella',
+        brand: "Kiehl's",
+        size: '50ML',
+        productName: 'Ultra Facial Cream',
+        price: '£37.00',
+        onAddToBag: () => console.log('Added Kiehl\'s to bag'),
+        onViewDetails: () => console.log('Viewing Kiehl\'s details'),
+    },
+    {
+        id: '2',
+        image: require('../assets/nivea-cream-2.jpg'),
+        tag: 'Customer Favourite',
+        rating: 4,
+        reviewTitle: 'A Glow Boosting Serum',
+        reviewBody: 'Makes my skin glow! Lightweight and very effective.',
+        reviewer: 'beautylover99',
+        brand: 'Glow Recipe',
+        size: '30ML',
+        productName: 'Dew Drops Serum',
+        price: '£31.00',
+        onAddToBag: () => console.log('Added Glow Recipe to bag'),
+        onViewDetails: () => console.log('Viewing Glow Recipe details'),
+    },
+];
 
 
 const renderPromoStrip = () => (
@@ -357,6 +389,8 @@ const renderHeaderSection = (
             orientation="horizontal"
         />
         <FeaturedBlogEntries blogEntry={trendingFeaturedBlogEntries} tag="Trending Stories" />
+
+        <FeaturedCustomerFavouriteProducts products={featuredCustomerFavouriteProductItems} />
 
     </>
 );
